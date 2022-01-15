@@ -1,3 +1,3 @@
 export default {
-  staticUrl: 'http://localhost:3000',
+  staticUrl: 'http://localhost:1337',
 };

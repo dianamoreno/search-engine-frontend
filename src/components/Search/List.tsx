@@ -1,22 +1,43 @@
 import React, { ReactElement } from 'react';
+import ReactLoading from 'react-loading';
+import settings from '../../settings';
 import { CardList } from './CardList';
+import { useSelector } from 'react-redux';
+import { selectPosts, selectStatus } from '../../redux/slices/postsSlice';
 
 export const List: React.FC = (): ReactElement => {
-  const results = new Array(5).fill(1);
+  const posts = useSelector(selectPosts);
+  const loading = useSelector(selectStatus);
 
-  if (!results.length)
-    return <p>Please search by title to get some results!</p>;
+  if (!posts.length) return <p>Please search by title to get some results!</p>;
+
   return (
-    <div className="search-results-list">
-      {results.map((item, index) => (
-        <CardList
-          key={index}
-          uri={''}
-          title={'title...'}
-          short_desc={'descripcion...'}
-          id={index}
+    <>
+      {loading ? (
+        <ReactLoading
+          type={'spin'}
+          color={'#00c3ff'}
+          height={36}
+          width={36}
+          className="loading"
         />
-      ))}
-    </div>
+      ) : (
+        <div className="search-results-list">
+          {posts.map(({ id, attributes }, index) => {
+            const image =
+              attributes.photo.data.attributes.formats.thumbnail.url;
+            return (
+              <CardList
+                key={index}
+                uri={image}
+                title={attributes.title}
+                short_desc={attributes.short_description}
+                id={id}
+              />
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 };
