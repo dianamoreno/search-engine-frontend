@@ -1,18 +1,19 @@
-import React, { ReactElement, useEffect } from 'react';
-import { Outlet, useSearchParams } from 'react-router-dom';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import { Form } from '../components/Search/Form';
 import { List } from '../components/Search/List';
+import { useDispatch } from 'react-redux';
+import { getAllPosts } from '../redux/slices/postsSlice';
 
 const SearchScreen: React.FC = (): ReactElement => {
-  const [searchParams, setSearchParams] = useSearchParams({ replace: 'true' });
+  const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useState('');
   const onSubmitCallBack = (value: string) => {
-    console.log('oncallback', value);
     setSearchParams(value);
   };
 
   useEffect(() => {
-    //enpoint request
-    console.log('enpoint request');
+    dispatch(getAllPosts(searchParams));
   }, [searchParams]);
 
   return (

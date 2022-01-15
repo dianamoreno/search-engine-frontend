@@ -14,7 +14,7 @@ export const CardList: React.FC<CardProps> = ({
   //the max with is calculated using the width and margins of their containers
   const maxWidthThumbnail = (width * 0.8 - 70) * 0.2;
   const defaultImage = uri
-    ? { uri: `${settings.staticUrl}${uri}` }
+    ? `${settings.staticUrl}${uri}`
     : require('../../images/temp.jpg');
   const location = useLocation();
   const to = `/search/${id}`;

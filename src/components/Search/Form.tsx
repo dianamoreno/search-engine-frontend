@@ -10,11 +10,6 @@ export const Form: React.FC<FormProps> = ({
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.value.trim()) {
-      return;
-    }
-
-    console.log('click');
     onSubmitHandler(input.value);
     input.value = '';
   };
