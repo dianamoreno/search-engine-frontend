@@ -1,19 +1,14 @@
-import React from 'react';
-import logo from './images/search-engine.svg';
+import React, { ReactElement } from 'react';
 import './App.css';
+import { HomeScreen } from './screens/HomeScreen';
+import { homePropsData } from './utils/data';
 
-function App() {
+const App: React.FC = (): ReactElement => {
   return (
-    <div className="main">
-      <header className="header">
-        <p className="title">Welcome to my Search Engine App.</p>
-        <img src={logo} className="search-logo" alt="logo" />
-        <a className="link" href="" target="_parent" rel="noopener noreferrer">
-          Go to Search!
-        </a>
-      </header>
-    </div>
+    <main className="main">
+      <HomeScreen {...homePropsData} />
+    </main>
   );
-}
+};
 
 export default App;

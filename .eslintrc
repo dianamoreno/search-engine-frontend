@@ -27,8 +27,11 @@
     "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
     "import/no-named-as-default": 0,
     "import/no-named-as-default-member": 0,
+    "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/ban-types": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   },
   "settings": {
     "react": {
